@@ -12,6 +12,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
     - uses: actions/checkout@v2
     - name: Setup Go environment
       uses: actions/setup-go@v2
@@ -25,5 +28,5 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: build/*.tar.gz
         file_glob: true
-        tag: ${{ github.ref }}
+        tag: nightly-release-${{ steps.date.outputs.date }}
         overwrite: true
