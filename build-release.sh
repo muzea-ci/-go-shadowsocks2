@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+
 BUILD_DIR=$(dirname "$0")/build
 mkdir -p $BUILD_DIR
 cd $BUILD_DIR
